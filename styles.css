@@ -3,3 +3,79 @@ body {
   margin: 0;
   font-family: "Montserrat"
 }
+
+.add-book-button {
+  border: none;
+  border-radius: 5px;
+  background-color: #38bdf8;
+  padding: 10px 20px;
+  font-size: .85rem;
+  font-weight: 600;
+}
+
+.add-book-button:hover {
+  cursor: pointer;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+}
+
+.books-container {
+  border: 3px #d1d5db solid;
+  padding: 10px;
+  margin-top: 50px;
+  border-radius: 10px;
+}
+
+.book-container {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.book-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.book-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.book-info {
+  display: flex;
+  gap: 40px;
+}
+
+.book-author {
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.book-read {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.remove-book {
+  border: none;
+  background-color:#38bdf8;
+  border-radius: 5px;
+  height: 20%;
+  padding: 15px;
+  font-weight: 600;
+}
+
+.remove-book:hover {
+  cursor: pointer;
+}
