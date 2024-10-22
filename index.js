@@ -5,6 +5,10 @@ const addBookButton = document.querySelector(".add-book-button");
 const removeBookButton = document.querySelector(".remove-book");
 const addBookModal = document.querySelector(".add-book-modal");
 const bookModalSubmit = document.querySelector("#add-book-modal-button");
+const newBookTitle = document.querySelector("#add-book-title")
+const newBookAuthor = document.querySelector("#add-book-author")
+const newBookPages = document.querySelector("#add-book-pages")
+const newBookRead = document.querySelector("#add-book-read")
 
 function Book(title, author, numPages, read) {
   this.title = title;
@@ -86,21 +90,25 @@ function removeBookFromLibrary(bookIdx, nodeToRemove) {
 
 addBookButton.addEventListener("click", () => {
   addBookModal.showModal();
+  newBookTitle.value = "";
+  newBookAuthor.value = "";
+  newBookPages.value = "";
+  newBookRead.checked = false;
 });
 
 bookModalSubmit.addEventListener("click", (e) => {
   let validInput = false;
-  let newBookTitle = document.querySelector("#add-book-title").value
-  let newBookAuthor = document.querySelector("#add-book-author").value
-  let newBookPages = document.querySelector("#add-book-pages").value
-  let newBookRead = document.querySelector("#add-book-read").checked;
+  const newTitle = newBookTitle.value
+  const newAuthor = newBookAuthor.value
+  const newPages = newBookPages.value;
+  const newRead = newBookRead.checked;
 
-  if (newBookTitle.length > 0 && newBookAuthor.length > 0 && +newBookPages > 0) {
+  if (newBookTitle.value.length > 0 && newBookAuthor.value.length > 0 && +newBookPages.value > 0) {
     validInput = true;
   }
 
   if (validInput) {
-    const newBookToAdd = new Book(newBookTitle, newBookAuthor, newBookPages, newBookRead);
+    const newBookToAdd = new Book(newTitle, newAuthor, newPages, newRead);
     addBookToLibrary(newBookToAdd);
   } else {
     e.preventDefault();

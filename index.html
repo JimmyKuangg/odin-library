@@ -17,25 +17,23 @@
       <button class="add-book-button">ADD A BOOK</button>
 
       <div class="books-container">
-        
       </div>
-
     </div>
     
     <dialog class="add-book-modal">
-      <h4>Testing</h4>
-      <form method="dialog">
+      <h4>Add a Book!</h4>
+      <form method="dialog" id="modal-form">
         <label for="add-book-title">
           Title:
-          <input type="text" id="add-book-title" value="" required minlength="1">
+          <input type="text" id="add-book-title" required minlength="1">
         </label>
         <label for="add-book-author">
           Author:
-          <input type="text" id="add-book-author" value="" required minlength="1">
+          <input type="text" id="add-book-author" required minlength="1">
         </label>
         <label for="add-book-pages">
           # of Pages:
-          <input type="text" id="add-book-pages" value="" required minlength="1">
+          <input type="number" id="add-book-pages" required minlength="1">
         </label>
         <label for="add-book-read">
           Read?

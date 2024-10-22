@@ -1,6 +1,7 @@
 body {
   padding: 0;
   margin: 0;
+  background-color: #fafaf9;
   font-family: "Montserrat"
 }
 
@@ -80,5 +81,43 @@ body {
 }
 
 .remove-book:hover {
+  cursor: pointer;
+}
+
+dialog {
+  border-radius: 10px;
+  border: 2px solid black;
+}
+
+dialog>h4 {
+  text-align: center;
+}
+
+#modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#modal-form label {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+#modal-form input {
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+#modal-form button {
+  border: none;
+  background-color:#38bdf8;
+  border-radius: 5px;
+  padding: 10px;
+  font-weight: 600;
+}
+
+#modal-form button:hover {
   cursor: pointer;
 }
