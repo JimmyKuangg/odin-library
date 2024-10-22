@@ -1,4 +1,5 @@
 const myLibrary = [];
+let bookIdx = myLibrary.length;
 const booksContainer = document.querySelector(".books-container");
 const addBookButton = document.querySelector(".add-book-button");
 const removeBookButton = document.querySelector(".remove-book");
@@ -15,8 +16,11 @@ function Book(title, author, numPages, read) {
   }
 }
 
-const bodyKeepsScore = new Book("the body keeps the score", "bessel van der kolk", "445", false);
+const bodyKeepsScore = new Book("the body keeps the score", "bessel van der kolk", "445", true);
 const fourAgreements = new Book("the FOUR AGREEMENTS", "Don miguel Ruiz", "153", false);
+
+addBookToLibrary(bodyKeepsScore);
+addBookToLibrary(fourAgreements);
 
 function addBookToLibrary(book) {
   myLibrary.push(book);
@@ -53,6 +57,9 @@ function addBookToLibrary(book) {
   const bookReadCheckbox = document.createElement("input");
   bookReadCheckbox.setAttribute("type", "checkbox");
   bookReadCheckbox.id = "toggle-book-read";
+  if (book.read) {
+    bookReadCheckbox.checked = true;
+  }
   bookRead.appendChild(bookReadLabel);
   bookRead.appendChild(bookReadCheckbox);
   newBook.appendChild(bookRead);
@@ -60,14 +67,21 @@ function addBookToLibrary(book) {
   const removeBookButton = document.createElement("button");
   removeBookButton.classList.add("remove-book");
   removeBookButton.innerText = "Remove";
+  removeBookButton.setAttribute("data-idx", bookIdx);
+  removeBookButton.addEventListener("click", (e) => {
+    removeBookFromLibrary(removeBookButton.dataset.idx, e.target.parentElement)
+  })
   newBook.appendChild(removeBookButton);
-
+  bookIdx++;
+  
   booksContainer.appendChild(newBook);
 }
 
-function removeBookFromLibrary(book) {
-  const bookIdx = myLibrary.indexOf(book);
+function removeBookFromLibrary(bookIdx, nodeToRemove) {
   myLibrary.splice(bookIdx, 1);
+  bookIdx--;
+
+  booksContainer.removeChild(nodeToRemove);
 }
 
 addBookButton.addEventListener("click", () => {
