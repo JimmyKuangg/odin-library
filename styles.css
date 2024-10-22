@@ -24,16 +24,18 @@ body {
 }
 
 .books-container {
-  border: 3px #d1d5db solid;
   padding: 10px;
-  margin-top: 50px;
-  border-radius: 10px;
 }
 
 .book-container {
+  border: 3px #d1d5db solid;
   display: flex;
   align-items: center;
+  padding: 10px;
   gap: 30px;
+  margin-top: 50px;
+  border-radius: 10px;
+  justify-content: space-between;
 }
 
 .book-content {
@@ -41,6 +43,7 @@ body {
   flex-direction: column;
   justify-content: space-around;
   gap: 20px;
+  flex: 1 1 auto;
 }
 
 .book-title {
