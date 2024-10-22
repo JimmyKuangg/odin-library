@@ -1,8 +1,9 @@
 const myLibrary = [];
 const booksContainer = document.querySelector(".books-container");
 const addBookButton = document.querySelector(".add-book-button");
-console.log(addBookButton);
 const removeBookButton = document.querySelector(".remove-book");
+const addBookModal = document.querySelector(".add-book-modal");
+const bookModalSubmit = document.querySelector("#add-book-modal-button");
 
 function Book(title, author, numPages, read) {
   this.title = title;
@@ -17,7 +18,7 @@ function Book(title, author, numPages, read) {
 const bodyKeepsScore = new Book("the body keeps the score", "bessel van der kolk", "445", false);
 const fourAgreements = new Book("the FOUR AGREEMENTS", "Don miguel Ruiz", "153", false);
 
-function addBookToLibraryHTML(book) {
+function addBookToLibrary(book) {
   myLibrary.push(book);
 
   const newBook = document.createElement("div");
@@ -69,4 +70,25 @@ function removeBookFromLibrary(book) {
   myLibrary.splice(bookIdx, 1);
 }
 
-addBookButton.addEventListener("click", addBookToLibrary);
+addBookButton.addEventListener("click", () => {
+  addBookModal.showModal();
+});
+
+bookModalSubmit.addEventListener("click", (e) => {
+  let validInput = false;
+  let newBookTitle = document.querySelector("#add-book-title").value
+  let newBookAuthor = document.querySelector("#add-book-author").value
+  let newBookPages = document.querySelector("#add-book-pages").value
+  let newBookRead = document.querySelector("#add-book-read").checked;
+
+  if (newBookTitle.length > 0 && newBookAuthor.length > 0 && +newBookPages > 0) {
+    validInput = true;
+  }
+
+  if (validInput) {
+    const newBookToAdd = new Book(newBookTitle, newBookAuthor, newBookPages, newBookRead);
+    addBookToLibrary(newBookToAdd);
+  } else {
+    e.preventDefault();
+  }
+})
